@@ -25,6 +25,10 @@ const bookSchema = new mongoose.Schema(
     },
     publishedYear: {
       type: Number
+    },
+    availability: {
+      type: Boolean,
+      default: true
     }
   },
   { timestamps: true }

@@ -1,4 +1,4 @@
-import MyBookModel from '../models/MyBookModel'
+import MyBookModel from '../models/MyBookModel.js'
 
 // Get My Books
 export const getMyBooks = async (req, res) => {
@@ -21,11 +21,12 @@ export const addBookToMyList = async (req, res) => {
       user: req.user.id,
       book: bookId
     })
+
     if (exists) {
       return res.status(400).json({ message: 'Book already in your list' })
     }
 
-    const newBook = await MyBook.create({
+    const newBook = await MyBookModel.create({
       user: req.user.id,
       book: bookId
     })
@@ -46,7 +47,7 @@ export const updateReadingStatus = async (req, res) => {
       return res.status(400).json({ message: 'Invalid status' })
     }
 
-    const updated = await MyBook.findOneAndUpdate(
+    const updated = await MyBookModel.findOneAndUpdate(
       { user: req.user.id, book: req.params.bookId },
       { status },
       { new: true }
@@ -71,7 +72,7 @@ export const updateRating = async (req, res) => {
       return res.status(400).json({ message: 'Rating must be between 1 and 5' })
     }
 
-    const updated = await MyBook.findOneAndUpdate(
+    const updated = await MyBookModel.findOneAndUpdate(
       { user: req.user.id, book: req.params.bookId },
       { rating },
       { new: true }
