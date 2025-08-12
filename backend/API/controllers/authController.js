@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken'
-import UserModel from '../models/UserModel'
+import UserModel from '../models/UserModel.js'
 
 // Generate JWT token
 
@@ -18,12 +18,13 @@ export const registerUser = async (req, res) => {
       return res.status(400).json({ message: 'All fields are required' })
     }
 
-    const userExists = await User.findOne({ email })
+    const userExists = await UserModel.findOne({ email })
     if (userExists) {
       return res.status(400).json({ message: 'User already exists' })
     }
 
     const user = await UserModel.create({ name, email, password })
+    console.log('user', user)
     res.status(201).json({
       message: 'User registered successfully',
       token: generateToken(user._id),
@@ -34,6 +35,7 @@ export const registerUser = async (req, res) => {
       }
     })
   } catch (err) {
+    console.error('Register Error:', err)
     res.status(500).json({ message: 'Server error', error: err.message })
   }
 }
@@ -57,6 +59,7 @@ export const loginUser = async (req, res) => {
       }
     })
   } catch (err) {
+    console.log(err)
     res.status(500).json({ message: 'Server error', error: err.message })
   }
 }
