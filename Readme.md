@@ -1,6 +1,6 @@
 # 📚 Book Heaven Backend
 ` 
-API : "https://bookheaven-a8my.onrender.com/api/books"
+API : "https://bookheaven-a8my.onrender.com"
 `
 ## 🚀 Overview
 
