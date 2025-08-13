@@ -38,7 +38,7 @@ export const CardBooks = ({ limit }) => {
   }
 
   return (
-    <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4'>
+    <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 py-6'>
       {books.slice(0, limit || books.length).map(book => (
         <CardTemplate
           key={book._id}
