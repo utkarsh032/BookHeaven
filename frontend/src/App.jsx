@@ -3,6 +3,7 @@ import { Navbar } from './Components/Navbar'
 import CategorySection from './Pages/CategorySection'
 import { FeaturedSection } from './Pages/FeaturedSection'
 import { HomePage } from './Pages/HomePage'
+import { PopularAuthor } from './Pages/PopularAuthor'
 
 function App () {
   return (
@@ -11,6 +12,7 @@ function App () {
       <HomePage />
       <FeaturedSection />
       <CategorySection />
+      <PopularAuthor />
     </>
   )
 }
