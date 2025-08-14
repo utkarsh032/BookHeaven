@@ -48,12 +48,7 @@ export const getAllBooks = async (req, res) => {
 
     const totalBooks = await BookModel.countDocuments(filter)
 
-    res.json({
-      total: totalBooks,
-      page,
-      pages: Math.ceil(totalBooks / limit),
-      books
-    })
+    res.json(books)
   } catch (err) {
     res.status(500).json({ message: 'Server error', error: err.message })
   }
