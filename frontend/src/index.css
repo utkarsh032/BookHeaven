@@ -1,1 +1,54 @@
 @import 'tailwindcss';
+
+@theme {
+  --font-size: 14px;
+
+  /* Book Reading Theme Colors */
+  --cream: #fdf6e3;
+  --beige: #f5e6cc;
+  --warm-brown: #8b5e3c;
+  --accent-blue: #2c3e50;
+  --forest-green: #2e4a3d;
+
+  --background: var(--cream);
+  --foreground: var(--warm-brown);
+  --card: #ffffff;
+  --card-foreground: var(--warm-brown);
+  --popover: #ffffff;
+  --popover-foreground: var(--warm-brown);
+  --primary: var(--accent-blue);
+  --primary-foreground: #ffffff;
+  --secondary: var(--beige);
+  --secondary-foreground: var(--warm-brown);
+  --muted: var(--beige);
+  --muted-foreground: #6b4f2a;
+  --accent: var(--forest-green);
+  --accent-foreground: #ffffff;
+  --destructive: #d4183d;
+  --destructive-foreground: #ffffff;
+  --border: rgba(139, 94, 60, 0.2);
+  --input: transparent;
+  --input-background: #ffffff;
+  --switch-background: #cbced4;
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --ring: var(--accent-blue);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --radius: 0.75rem;
+  --sidebar: var(--cream);
+  --sidebar-foreground: var(--warm-brown);
+  --sidebar-primary: var(--accent-blue);
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: var(--beige);
+  --sidebar-accent-foreground: var(--warm-brown);
+  --sidebar-border: rgba(139, 94, 60, 0.2);
+  --sidebar-ring: var(--accent-blue);
+}
+
+body {
+  background-color: var(--background);
+}
