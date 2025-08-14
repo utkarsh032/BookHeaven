@@ -9,6 +9,7 @@ import { PopularAuthor } from './Pages/PopularAuthor'
 import { StatisticsSection } from './Pages/StatisticsSection'
 import { SignupForm } from './Authentication/SignUpForm'
 import { LoginForm } from './Authentication/LoginForm'
+import { AllbookPage } from './Pages/AllBooks.jsx/AllbookPage'
 
 function App () {
   return (
@@ -32,6 +33,8 @@ function App () {
         {/* Specific Route for Sign Up */}
         <Route path='/login' element={<LoginForm />} />
         <Route path='/signup' element={<SignupForm />} />
+
+        <Route path='/books' element={<AllbookPage />} />
 
         {/* Example: direct access to sections (optional) */}
         <Route path='/categories' element={<CategorySection />} />
