@@ -59,6 +59,7 @@ export const CardBooks = ({ limit, query }) => {
       {books.map(book => (
         <CardTemplate
           key={book._id}
+          bookId={book._id}
           coverImage={book.coverImage}
           title={book.title}
           author={book.author}
