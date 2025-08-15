@@ -53,3 +53,15 @@ export const getAllBooks = async (req, res) => {
     res.status(500).json({ message: 'Server error', error: err.message })
   }
 }
+
+export const getBookById = async (req, res) => {
+  try {
+    const book = await BookModel.findById(req.params.id)
+    if (!book) {
+      return res.status(404).json({ message: 'Book not found' })
+    }
+    res.json(book)
+  } catch (err) {
+    res.status(500).json({ message: 'Server error', error: err.message })
+  }
+}
