@@ -10,6 +10,7 @@ import { StatisticsSection } from './Pages/StatisticsSection'
 import { SignupForm } from './Authentication/SignUpForm'
 import { LoginForm } from './Authentication/LoginForm'
 import { AllbookPage } from './Pages/AllBooks.jsx/AllbookPage'
+import { ReadBookPage } from './Pages/ReadBook/ReadBookPage'
 
 function App () {
   return (
@@ -35,6 +36,7 @@ function App () {
         <Route path='/signup' element={<SignupForm />} />
 
         <Route path='/books' element={<AllbookPage />} />
+        <Route path='/book/:id' element={<ReadBookPage />} />
 
         {/* Example: direct access to sections (optional) */}
         <Route path='/categories' element={<CategorySection />} />
