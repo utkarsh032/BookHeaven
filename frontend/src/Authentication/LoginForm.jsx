@@ -37,7 +37,7 @@ export const LoginForm = () => {
       // Prefer user from login response; fallback to /auth/me
       let user = data.user
       if (!user) {
-        const meRes = await fetch(`${API_BASE}/api/auth/me`, {
+        const meRes = await fetch(`${API_URL}/api/auth/me`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
