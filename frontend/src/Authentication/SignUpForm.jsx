@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { FiEyeOff, FiUnlock, FiEye, FiBook } from 'react-icons/fi'
 import { TfiEmail } from 'react-icons/tfi'
 import { Link, useNavigate } from 'react-router-dom'
 import { FaGoogle, FaFacebook } from 'react-icons/fa'
+import { AuthContext } from '../Context/AuthContext'
 
 const API_URL = import.meta.env.VITE_API_URL
 
@@ -14,6 +15,7 @@ export const SignupForm = () => {
   const [showPassword, setShowPassword] = useState(false)
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
+  const { setUser } = useContext(AuthContext)
 
   const handleSubmit = async e => {
     e.preventDefault()
@@ -52,6 +54,7 @@ export const SignupForm = () => {
 
         if (user) {
           localStorage.setItem('user', JSON.stringify(user))
+          setUser(user)
         }
 
         alert('Signup successful!')

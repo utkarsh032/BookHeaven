@@ -1,14 +1,15 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { FiBook, FiHome, FiMenu, FiX } from 'react-icons/fi'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { MdGridOn } from 'react-icons/md'
 import { LuLibraryBig, LuUsers } from 'react-icons/lu'
+import { AuthContext } from '../Context/AuthContext'
 
 export const Navbar = () => {
   const location = useLocation()
   const navigate = useNavigate()
   const [menuOpen, setMenuOpen] = useState(false)
-  const [user, setUser] = useState(null)
+  const { user, setUser } = useContext(AuthContext)
 
   // Read user from localStorage on mount
   useEffect(() => {
@@ -19,7 +20,10 @@ export const Navbar = () => {
   }, [])
 
   const handleLogout = () => {
-    localStorage.removeItem('user')
+    localStorage.clear()
+
+    // localStorage.removeItem('user')
+    // localStorage.removeItem('token')
     setUser(null)
     navigate('/')
   }
