@@ -9,12 +9,12 @@ export const ReadBookPage = () => {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
 
+  const API_URL = import.meta.env.VITE_API_URL
+
   useEffect(() => {
     const fetchBook = async () => {
       try {
-        const res = await fetch(
-          `https://bookheaven-a8my.onrender.com/api/books/${id}`
-        )
+        const res = await fetch(`${API_URL}/books/${id}`)
         if (!res.ok) throw new Error('Failed to fetch book')
         const data = await res.json()
         setBook(data)
