@@ -1,5 +1,5 @@
 import React from 'react'
-import HeroBg from '../assets/Hero_Bg.jpg'
+import HeroBg from '../assets/Hero_BG.jpg'
 import { GoBook } from 'react-icons/go'
 
 export const HomePage = () => {
