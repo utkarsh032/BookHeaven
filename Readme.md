@@ -1,5 +1,7 @@
 # 📖 BookHeaven — Frontend
 
+![Homepage Screenshot](About/Media/ResponsiveDemo.png)
+
 ##### A modern, beautifully crafted web application inspired by _Goodreads_, where users can browse books, manage their reading progress, and enjoy immersive reading experiences online.
 
 ## 💡 Pages Overview
