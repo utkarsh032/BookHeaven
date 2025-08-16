@@ -1,7 +1,59 @@
+# 📖 BookHeaven — Frontend
+
+##### A modern, beautifully crafted web application inspired by _Goodreads_, where users can browse books, manage their reading progress, and enjoy immersive reading experiences online.
+
+## 💡 Pages Overview
+
+### 🏠 Home Page
+
+> An elegant landing page that welcomes users to BookHeaven, with featured books, categories, popular authors, and overall platform statistics.
+
+![Homepage Screenshot](About/Media/HomePage.png)
+
+---
+
+### 🔐 Authentication Pages (Login / Signup)
+
+> Clean and user-friendly **Login** and **Signup** screens allowing users to securely access their accounts with form validation and social-auth buttons (Google/Facebook).
+
+![SignUpPage Screenshot](About/Media/SignUpPage.png)
+![SignInpage Screenshot](About/Media/SignInPage.png)
+
+---
+
+### 📚 All Books Page
+
+![AllBookPage Screenshot](About/Media/AllBookPage.png)
+
+> A paginated and filterable listing of all available books. Users can search, sort by rating, filter by genre/category, and quickly explore the BookHeaven collection.
+
+---
+
+### 📖 Read Book Content Page
+
+![BookConetnt Screenshot](About/Media/BookContentPage.png)
+
+> A full reading experience where the user can open a specific book, view details (title, author, genre, progress, etc.), and read chapter-wise content directly in the browser.
+
+# 🚀 Frontend Setup Guide — BookHeaven
+
+Follow these quick steps to run the **BookHeaven Frontend** locally on your machine:
+
+---
+
+### 📁 1. Clone the Repository
+
+```bash
+git clone git@github.com:utkarsh032/BookHeaven.git
+cd BookHeaven/frontend
+npm install
+npm run dev
+```
+
 # 📚 Book Heaven Backend
-` 
-API : "https://bookheaven-a8my.onrender.com"
-`
+
+` API : "https://bookheaven-a8my.onrender.com"`
+
 ## 🚀 Overview
 
 Book Heaven is a **GoodReads-inspired** backend API built with **Node.js, Express, and MongoDB**.  
