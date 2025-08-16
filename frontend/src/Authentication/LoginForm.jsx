@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { FiEyeOff, FiUnlock, FiEye, FiBook } from 'react-icons/fi'
 import { TfiEmail } from 'react-icons/tfi'
 import { Link, useNavigate } from 'react-router-dom'
 import { FaGoogle, FaFacebook } from 'react-icons/fa'
+import { AuthContext } from '../Context/AuthContext'
 
 const API_URL = import.meta.env.VITE_API_URL
 
@@ -12,6 +13,8 @@ export const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false)
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
+
+  const { setUser } = useContext(AuthContext)
 
   const handleSubmit = async e => {
     e.preventDefault()
@@ -34,8 +37,9 @@ export const LoginForm = () => {
       const token = data.token
       localStorage.setItem('token', token)
 
-      // Prefer user from login response; fallback to /auth/me
       let user = data.user
+
+      // If API does not return user directly, fallback:
       if (!user) {
         const meRes = await fetch(`${API_URL}/api/auth/me`, {
           method: 'GET',
@@ -49,9 +53,10 @@ export const LoginForm = () => {
         }
       }
 
-      // Save user if we got it
       if (user) {
+        // Save in LS and in Context (for immediate UI update)
         localStorage.setItem('user', JSON.stringify(user))
+        setUser(user) // <-- this updates Navbar immediately!
       }
 
       alert('Login successful!')

@@ -11,13 +11,14 @@ import { SignupForm } from './Authentication/SignUpForm'
 import { LoginForm } from './Authentication/LoginForm'
 import { AllbookPage } from './Pages/AllBooks.jsx/AllbookPage'
 import { ReadBookPage } from './Pages/ReadBook/ReadBookPage'
+import { PrivateRoute } from './Components/PrivateRoute'
 
 function App () {
   return (
     <>
       <Navbar />
       <Routes>
-        {/* Home Page */}
+        {/* Public Home/Landing */}
         <Route
           path='/'
           element={
@@ -31,18 +32,61 @@ function App () {
           }
         />
 
-        {/* Specific Route for Sign Up */}
+        {/* Public Auth */}
         <Route path='/login' element={<LoginForm />} />
         <Route path='/signup' element={<SignupForm />} />
 
-        <Route path='/books' element={<AllbookPage />} />
-        <Route path='/book/:id' element={<ReadBookPage />} />
+        {/* Protected Routes */}
+        <Route
+          path='/books'
+          element={
+            <PrivateRoute>
+              <AllbookPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path='/book/:id'
+          element={
+            <PrivateRoute>
+              <ReadBookPage />
+            </PrivateRoute>
+          }
+        />
 
-        {/* Example: direct access to sections (optional) */}
-        <Route path='/categories' element={<CategorySection />} />
-        <Route path='/featured' element={<FeaturedSection />} />
-        <Route path='/authors' element={<PopularAuthor />} />
-        <Route path='/stats' element={<StatisticsSection />} />
+        {/* You can also protect these individually if needed */}
+        <Route
+          path='/categories'
+          element={
+            <PrivateRoute>
+              <CategorySection />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path='/featured'
+          element={
+            <PrivateRoute>
+              <FeaturedSection />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path='/authors'
+          element={
+            <PrivateRoute>
+              <PopularAuthor />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path='/stats'
+          element={
+            <PrivateRoute>
+              <StatisticsSection />
+            </PrivateRoute>
+          }
+        />
       </Routes>
       <Footer />
     </>
