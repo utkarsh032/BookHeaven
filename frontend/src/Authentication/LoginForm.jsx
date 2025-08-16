@@ -4,7 +4,7 @@ import { TfiEmail } from 'react-icons/tfi'
 import { Link, useNavigate } from 'react-router-dom'
 import { FaGoogle, FaFacebook } from 'react-icons/fa'
 
-const API_BASE = 'https://bookheaven-a8my.onrender.com'
+const API_URL = import.meta.env.VITE_API_URL
 
 export const LoginForm = () => {
   const [email, setEmail] = useState('')
@@ -18,7 +18,7 @@ export const LoginForm = () => {
     setLoading(true)
 
     try {
-      const res = await fetch(`${API_BASE}/api/auth/login`, {
+      const res = await fetch(`${API_URL}/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
