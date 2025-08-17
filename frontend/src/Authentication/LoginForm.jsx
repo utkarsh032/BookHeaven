@@ -4,6 +4,7 @@ import { TfiEmail } from 'react-icons/tfi'
 import { Link, useNavigate } from 'react-router-dom'
 import { FaGoogle, FaFacebook } from 'react-icons/fa'
 import { AuthContext } from '../Context/AuthContext'
+import { Slide, toast } from 'react-toastify'
 
 const API_URL = import.meta.env.VITE_API_URL
 
@@ -30,7 +31,17 @@ export const LoginForm = () => {
       const data = await res.json()
 
       if (!res.ok) {
-        alert(data.message || 'Login failed')
+        toast.error(data.message || 'Login failed', {
+          position: 'top-right',
+          autoClose: 1000,
+          hideProgressBar: true,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'colored',
+          transition: Slide
+        })
         return
       }
 
@@ -39,7 +50,6 @@ export const LoginForm = () => {
 
       let user = data.user
 
-      // If API does not return user directly, fallback:
       if (!user) {
         const meRes = await fetch(`${API_URL}/api/auth/me`, {
           method: 'GET',
@@ -54,16 +64,35 @@ export const LoginForm = () => {
       }
 
       if (user) {
-        // Save in LS and in Context (for immediate UI update)
         localStorage.setItem('user', JSON.stringify(user))
-        setUser(user) // <-- this updates Navbar immediately!
+        setUser(user)
       }
 
-      alert('Login successful!')
+      toast.success('Login successful!', {
+        position: 'top-right',
+        autoClose: 1000,
+        hideProgressBar: true,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'colored',
+        transition: Slide
+      })
+
       navigate('/')
     } catch (error) {
-      console.error(error)
-      alert('Server error')
+      toast.error(error || 'Server Error', {
+        position: 'top-right',
+        autoClose: 1000,
+        hideProgressBar: true,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'colored',
+        transition: Slide
+      })
     } finally {
       setLoading(false)
     }
