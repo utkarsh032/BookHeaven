@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { MdGridOn } from 'react-icons/md'
 import { LuLibraryBig, LuUsers } from 'react-icons/lu'
 import { AuthContext } from '../Context/AuthContext'
+import { Slide, toast } from 'react-toastify'
 
 export const Navbar = () => {
   const location = useLocation()
@@ -11,7 +12,6 @@ export const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false)
   const { user, setUser } = useContext(AuthContext)
 
-  // Read user from localStorage on mount
   useEffect(() => {
     const savedUser = localStorage.getItem('user')
     if (savedUser) {
@@ -20,10 +20,18 @@ export const Navbar = () => {
   }, [])
 
   const handleLogout = () => {
+    toast.warn('You Are Logged-out', {
+      position: 'top-right',
+      autoClose: 1000,
+      hideProgressBar: true,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'colored',
+      transition: Slide
+    })
     localStorage.clear()
-
-    // localStorage.removeItem('user')
-    // localStorage.removeItem('token')
     setUser(null)
     navigate('/')
   }

@@ -4,6 +4,7 @@ import { TfiEmail } from 'react-icons/tfi'
 import { Link, useNavigate } from 'react-router-dom'
 import { FaGoogle, FaFacebook } from 'react-icons/fa'
 import { AuthContext } from '../Context/AuthContext'
+import { Slide, toast } from 'react-toastify'
 
 const API_URL = import.meta.env.VITE_API_URL
 
@@ -20,7 +21,17 @@ export const SignupForm = () => {
   const handleSubmit = async e => {
     e.preventDefault()
     if (password !== confirmPassword) {
-      alert('Passwords do not match!')
+      toast.error('Passwords do not match!', {
+        position: 'top-right',
+        autoClose: 1000,
+        hideProgressBar: true,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'colored',
+        transition: Slide
+      })
       return
     }
     setLoading(true)
@@ -57,14 +68,44 @@ export const SignupForm = () => {
           setUser(user)
         }
 
-        alert('Signup successful!')
+        toast.success('Signup successful!', {
+          position: 'top-right',
+          autoClose: 1000,
+          hideProgressBar: true,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'colored',
+          transition: Slide
+        })
         navigate('/')
       } else {
-        alert(data.message || 'Signup failed')
+        toast.error(data.message || 'Signup failed', {
+          position: 'top-right',
+          autoClose: 1000,
+          hideProgressBar: true,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'colored',
+          transition: Slide
+        })
       }
     } catch (error) {
       console.error(error)
-      alert('Server error')
+      toast.error(error || 'Server Error', {
+        position: 'top-right',
+        autoClose: 1000,
+        hideProgressBar: true,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'colored',
+        transition: Slide
+      })
     } finally {
       setLoading(false)
     }
